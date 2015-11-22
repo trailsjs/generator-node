@@ -22,6 +22,7 @@ describe('node:gulp', function () {
 
       assert.fileContent('gulpfile.js', 'gulp.task(\'coveralls\'');
       assert.fileContent('gulpfile.js', 'gulp.task(\'test\'');
+      assert.fileContent('gulpfile.js', 'gulp.task(\'auto-test\'');
       assert.fileContent('gulpfile.js', 'gulp.task(\'static\'');
 
       assert.fileContent('package.json', 'gulp');

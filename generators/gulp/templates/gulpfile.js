@@ -57,6 +57,11 @@ gulp.task('test', ['pre-test'], function (cb) {
       cb(mochaErr);
     });
 });
+
+gulp.task('auto-test', function() {
+    gulp.watch(['lib/**', 'test/**'], ['test']);
+});
+
 <% if (includeCoveralls) { -%>
 
 gulp.task('coveralls', ['test'], function () {
