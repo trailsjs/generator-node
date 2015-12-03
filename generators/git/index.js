@@ -28,11 +28,6 @@ module.exports = generators.Base.extend({
 
   initializing: function () {
     this.fs.copy(
-      this.templatePath('gitattributes'),
-      this.destinationPath(this.options.generateInto, '.gitattributes')
-    );
-
-    this.fs.copy(
       this.templatePath('gitignore'),
       this.destinationPath(this.options.generateInto, '.gitignore')
     );
