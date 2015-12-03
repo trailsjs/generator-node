@@ -1,37 +1,27 @@
-# <%= projectName %> [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]<%
-if (includeCoveralls) { %> [![Coverage percentage][coveralls-image]][coveralls-url]<% } -%>
+# <%= projectName %>
+
+[![NPM version][npm-image]][npm-url]
+[![Build status][travis-image]][travis-url]
+[![Dependency Status][daviddm-image]][daviddm-url]
 
 > <%= description %>
 
-<% if (!content) { -%>
-## Installation
-
+## 1. Install
 ```sh
-$ npm install --save <%= projectName %>
+$ npm install <%= projectName %>
 ```
 
-## Usage
-
-```js
-var <%= safeProjectName %> = require('<%= projectName %>');
-
-<%= safeProjectName %>('Rainbow');
+## 2. Start
+```sh
+$ npm start
 ```
-<% } else { -%>
-<%= content %>
-<% } -%>
+
 ## License
-
 <%= license %> © [<%= author.name %>](<%= author.url %>)
 
-
-[npm-image]: https://badge.fury.io/js/<%= projectName %>.svg
+[npm-image]: https://img.shields.io/npm/v/<%= projectName %>.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/<%= projectName %>
-[travis-image]: https://travis-ci.org/<%= githubAccount %>/<%= projectName %>.svg?branch=master
+[travis-image]: https://img.shields.io/travis/<%= githubAccount %>/<%= projectName %>.svg?style=flat-square
 [travis-url]: https://travis-ci.org/<%= githubAccount %>/<%= projectName %>
-[daviddm-image]: https://david-dm.org/<%= githubAccount %>/<%= projectName %>.svg?theme=shields.io
+[daviddm-image]: http://img.shields.io/david/<%= githubAccount %>/<%= projectName %>.svg?style=flat-square
 [daviddm-url]: https://david-dm.org/<%= githubAccount %>/<%= projectName %>
-<% if (includeCoveralls) { -%>
-[coveralls-image]: https://coveralls.io/repos/<%= githubAccount %>/<%= projectName %>/badge.svg
-[coveralls-url]: https://coveralls.io/r/<%= githubAccount %>/<%= projectName %>
-<% } -%>
