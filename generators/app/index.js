@@ -152,6 +152,9 @@ module.exports = generators.Base.extend({
 
       this.prompt(prompts, function (props) {
         this.props = extend(this.props, props);
+        _.merge(this.options.subgenerators, {
+          node: this.props
+        })
         done();
       }.bind(this));
     },
@@ -166,6 +169,9 @@ module.exports = generators.Base.extend({
           default: username
         }, function (prompt) {
           this.props.githubAccount = prompt.githubAccount;
+          _.merge(this.options.subgenerators, {
+            node: prompt
+          })
           done();
         }.bind(this));
       }.bind(this));
