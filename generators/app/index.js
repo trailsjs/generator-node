@@ -191,9 +191,6 @@ module.exports = generators.Base.extend({
         email: this.props.authorEmail,
         url: this.props.authorUrl
       },
-      files: [
-        this.props.babel ? 'dist' : this.options.projectRoot
-      ],
       main: this.props.babel ? 'dist/index.js' : path.join(
         this.options.projectRoot,
         'index.js'
