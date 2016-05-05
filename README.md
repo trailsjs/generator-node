@@ -2,7 +2,8 @@
 
 [![Gitter][gitter-image]][gitter-url]
 [![NPM version][npm-image]][npm-url]
-[![Build status][ci-image]][ci-url]
+[![Linux + OSX Build Status][ci-image]][ci-url]
+[![Windows Build Status][appveyor-image]][appveyor-url]
 [![Code Climate][codeclimate-image]][codeclimate-url]
 [![Follow @trailsjs on Twitter][twitter-image]][twitter-url]
 
@@ -18,6 +19,8 @@ MIT © Yeoman team (http://yeoman.io)
 [npm-url]: https://npmjs.org/package/@trails/generator-node
 [ci-image]: https://img.shields.io/travis/trailsjs/generator-node/master.svg?style=flat-square
 [ci-url]: https://travis-ci.org/trailsjs/generator-node
+[appveyor-image]: https://img.shields.io/appveyor/ci/trailsjs/generator-node/master.svg?style=flat-square&label=Windows
+[appveyor-url]: https://ci.appveyor.com/project/trailsjs/generator-node
 [codeclimate-image]: https://img.shields.io/codeclimate/github/trailsjs/generator-node.svg?style=flat-square
 [codeclimate-url]: https://codeclimate.com/github/trailsjs/generator-node
 [gitter-image]: http://img.shields.io/badge/+%20GITTER-JOIN%20CHAT%20%E2%86%92-1DCE73.svg?style=flat-square
