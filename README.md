@@ -14,8 +14,8 @@ MIT © Yeoman team (http://yeoman.io)
 
 [trails-image]: http://i.imgur.com/zfT2NEv.png
 [trails-url]: http://trailsjs.io
-[npm-image]: https://img.shields.io/npm/v/@trailsjs/generator-node.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/@trailsjs/generator-node
+[npm-image]: https://img.shields.io/npm/v/@trails/generator-node.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/@trails/generator-node
 [ci-image]: https://img.shields.io/travis/trailsjs/generator-node/master.svg?style=flat-square
 [ci-url]: https://travis-ci.org/trailsjs/generator-node
 [codeclimate-image]: https://img.shields.io/codeclimate/github/trailsjs/generator-node.svg?style=flat-square
