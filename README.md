@@ -1,4 +1,4 @@
-# Node Generator [![Build Status](https://secure.travis-ci.org/yeoman/generator-node.svg?branch=master)](https://travis-ci.org/yeoman/generator-node)
+# Node Generator [![Build Status](https://secure.travis-ci.org/yeoman/generator-node.svg?branch=master)](https://travis-ci.org/yeoman/generator-node) [![Gitter](https://img.shields.io/badge/Gitter-Join_the_Yeoman_chat_%E2%86%92-00d06f.svg)](https://gitter.im/yeoman/yeoman) [![OpenCollective](https://opencollective.com/yeoman/badge/backers.svg)](https://opencollective.com/yeoman#support)
 
 `generator-node` creates a base template to start a new Node.js module.
 
@@ -87,6 +87,7 @@ Here's a list of our supported options:
 - `gulp` (Boolean, default true) include or not a `gulpfile`.
 - `license` (Boolean, default true) include or not a `LICENSE` file.
 - `travis` (Boolean, default true) include or not a `.travis.yml` file.
+- `githubAccount` (String) Account name for GitHub repo location.
 - `readme` (String) content of the `README.md` file. Given this option, generator-node will still generate the title (with badges) and the license section.
 
 ### Sub generators
@@ -102,9 +103,102 @@ Remember you can see the options of each sub generators by running `yo node:sub 
 - `node:eslint`
 - `node:git`
 - `node:gulp`
-- `node:license`
 - `node:readme`
 
+## Backers
+Love Yeoman work and community? Help us keep it alive by donating funds to cover project expenses! <br />
+[[Become a backer](https://opencollective.com/yeoman#support)]
+
+  <a href="https://opencollective.com/yeoman/backers/0/website" target="_blank">
+    <img src="https://opencollective.com/yeoman/backers/0/avatar">
+  </a>
+  <a href="https://opencollective.com/yeoman/backers/1/website" target="_blank">
+    <img src="https://opencollective.com/yeoman/backers/1/avatar">
+  </a>
+  <a href="https://opencollective.com/yeoman/backers/2/website" target="_blank">
+    <img src="https://opencollective.com/yeoman/backers/2/avatar">
+  </a>
+  <a href="https://opencollective.com/yeoman/backers/3/website" target="_blank">
+    <img src="https://opencollective.com/yeoman/backers/3/avatar">
+  </a>
+  <a href="https://opencollective.com/yeoman/backers/4/website" target="_blank">
+    <img src="https://opencollective.com/yeoman/backers/4/avatar">
+  </a>
+  <a href="https://opencollective.com/yeoman/backers/5/website" target="_blank">
+    <img src="https://opencollective.com/yeoman/backers/5/avatar">
+  </a>
+  <a href="https://opencollective.com/yeoman/backers/6/website" target="_blank">
+    <img src="https://opencollective.com/yeoman/backers/6/avatar">
+  </a>
+  <a href="https://opencollective.com/yeoman/backers/7/website" target="_blank">
+    <img src="https://opencollective.com/yeoman/backers/7/avatar">
+  </a>
+  <a href="https://opencollective.com/yeoman/backers/8/website" target="_blank">
+    <img src="https://opencollective.com/yeoman/backers/8/avatar">
+  </a>
+  <a href="https://opencollective.com/yeoman/backers/9/website" target="_blank">
+    <img src="https://opencollective.com/yeoman/backers/9/avatar">
+  </a>
+  <a href="https://opencollective.com/yeoman/backers/10/website" target="_blank">
+    <img src="https://opencollective.com/yeoman/backers/10/avatar">
+  </a>
+  <a href="https://opencollective.com/yeoman/backers/11/website" target="_blank">
+    <img src="https://opencollective.com/yeoman/backers/11/avatar">
+  </a>
+  <a href="https://opencollective.com/yeoman/backers/12/website" target="_blank">
+    <img src="https://opencollective.com/yeoman/backers/12/avatar">
+  </a>
+  <a href="https://opencollective.com/yeoman/backers/13/website" target="_blank">
+    <img src="https://opencollective.com/yeoman/backers/13/avatar">
+  </a>
+  <a href="https://opencollective.com/yeoman/backers/14/website" target="_blank">
+    <img src="https://opencollective.com/yeoman/backers/14/avatar">
+  </a>
+  <a href="https://opencollective.com/yeoman/backers/15/website" target="_blank">
+    <img src="https://opencollective.com/yeoman/backers/15/avatar">
+  </a>
+  <a href="https://opencollective.com/yeoman/backers/16/website" target="_blank">
+    <img src="https://opencollective.com/yeoman/backers/16/avatar">
+  </a>
+  <a href="https://opencollective.com/yeoman/backers/17/website" target="_blank">
+    <img src="https://opencollective.com/yeoman/backers/17/avatar">
+  </a>
+  <a href="https://opencollective.com/yeoman/backers/18/website" target="_blank">
+    <img src="https://opencollective.com/yeoman/backers/18/avatar">
+  </a>
+  <a href="https://opencollective.com/yeoman/backers/19/website" target="_blank">
+    <img src="https://opencollective.com/yeoman/backers/19/avatar">
+  </a>
+  <a href="https://opencollective.com/yeoman/backers/20/website" target="_blank">
+    <img src="https://opencollective.com/yeoman/backers/20/avatar">
+  </a>
+  <a href="https://opencollective.com/yeoman/backers/21/website" target="_blank">
+    <img src="https://opencollective.com/yeoman/backers/21/avatar">
+  </a>
+  <a href="https://opencollective.com/yeoman/backers/22/website" target="_blank">
+    <img src="https://opencollective.com/yeoman/backers/22/avatar">
+  </a>
+  <a href="https://opencollective.com/yeoman/backers/23/website" target="_blank">
+    <img src="https://opencollective.com/yeoman/backers/23/avatar">
+  </a>
+  <a href="https://opencollective.com/yeoman/backers/24/website" target="_blank">
+    <img src="https://opencollective.com/yeoman/backers/24/avatar">
+  </a>
+  <a href="https://opencollective.com/yeoman/backers/25/website" target="_blank">
+    <img src="https://opencollective.com/yeoman/backers/25/avatar">
+  </a>
+  <a href="https://opencollective.com/yeoman/backers/26/website" target="_blank">
+    <img src="https://opencollective.com/yeoman/backers/26/avatar">
+  </a>
+  <a href="https://opencollective.com/yeoman/backers/27/website" target="_blank">
+    <img src="https://opencollective.com/yeoman/backers/27/avatar">
+  </a>
+  <a href="https://opencollective.com/yeoman/backers/28/website" target="_blank">
+    <img src="https://opencollective.com/yeoman/backers/28/avatar">
+  </a>
+  <a href="https://opencollective.com/yeoman/backers/29/website" target="_blank">
+    <img src="https://opencollective.com/yeoman/backers/29/avatar">
+  </a>
 
 ## License
 

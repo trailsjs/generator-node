@@ -3,12 +3,14 @@ var _ = require('lodash');
 var mockery = require('mockery');
 var path = require('path');
 var assert = require('yeoman-assert');
-var helpers = require('yeoman-generator').test;
-var fs = require('fs');
+var helpers = require('yeoman-test');
 
 describe('node:app', function () {
   before(function () {
-    mockery.enable({warnOnUnregistered: false});
+    mockery.enable({
+      warnOnReplace: false,
+      warnOnUnregistered: false
+    });
 
     mockery.registerMock('npm-name', function (name, cb) {
       cb(null, true);
@@ -54,7 +56,7 @@ describe('node:app', function () {
 
     it('creates package.json', function () {
       assert.file('package.json');
-      assert.JSONFileContent('package.json', {
+      assert.jsonFileContent('package.json', {
         name: 'generator-node',
         version: '0.0.0',
         description: this.answers.description,
@@ -96,7 +98,7 @@ describe('node:app', function () {
 
     it('extends package.json keys with missing ones', function () {
       var pkg = _.extend({name: 'generator-node'}, this.pkg);
-      assert.JSONFileContent('package.json', pkg);
+      assert.jsonFileContent('package.json', pkg);
     });
 
     it('does not overwrite previous README.md', function () {

@@ -1,6 +1,6 @@
 'use strict';
 var _ = require('lodash');
-var extend = require('deep-extend');
+var extend = _.merge;
 var generators = require('yeoman-generator');
 var parseAuthor = require('parse-author');
 var githubUsername = require('github-username');
@@ -38,10 +38,36 @@ module.exports = generators.Base.extend({
       desc: 'Add a CLI'
     });
 
+    this.option('coveralls', {
+      type: Boolean,
+      required: false,
+      desc: 'Include coveralls config'
+    });
+
+    this.option('gulp', {
+      type: Boolean,
+      required: false,
+      defaults: true,
+      desc: 'Include or not a gulpfile.js'
+    });
+
+    this.option('license', {
+      type: Boolean,
+      required: false,
+      defaults: true,
+      desc: 'Include a license'
+    });
+
     this.option('name', {
       type: String,
       required: false,
       desc: 'Project name'
+    });
+
+    this.option('githubAccount', {
+      type: String,
+      required: false,
+      desc: 'GitHub username or organization'
     });
 
     this.option('projectRoot', {
@@ -137,7 +163,9 @@ module.exports = generators.Base.extend({
         name: 'keywords',
         message: 'Package keywords (comma to split)',
         when: !this.pkg.keywords,
-        filter: _.words
+        filter: function (words) {
+          return words.split(/\s*,\s*/g);
+        }
       }, {
         name: 'babel',
         type: 'confirm',
@@ -160,28 +188,33 @@ module.exports = generators.Base.extend({
     },
 
     askForGithubAccount: function () {
-      var done = this.async();
+      if (this.options.githubAccount) {
+        this.props.githubAccount = this.options.githubAccount;
+      } else {
+        var done = this.async();
 
-      githubUsername(this.props.authorEmail, function (err, username) {
-        this.prompt({
-          name: 'githubAccount',
-          message: 'GitHub username or organization',
-          default: username
-        }, function (prompt) {
-          this.props.githubAccount = prompt.githubAccount;
-          _.merge(this.options.subgenerators, {
-            node: prompt
-          })
-          done();
+        githubUsername(this.props.authorEmail, function (err, username) {
+          if (err) {
+            username = username || '';
+          }
+          this.prompt({
+            name: 'githubAccount',
+            message: 'GitHub username or organization',
+            default: username
+          }, function (prompt) {
+            this.props.githubAccount = prompt.githubAccount;
+            done();
+          }.bind(this));
         }.bind(this));
-      }.bind(this));
+      }
     }
   },
 
   writing: function () {
     // Re-read the content at this point because a composed generator might modify it.
     var currentPkg = this.fs.readJSON(this.destinationPath('package.json'), {});
-    var pkg = {
+
+    var pkg = extend({
       name: _.kebabCase(this.props.name),
       version: '0.0.0',
       description: this.props.description || 'A new Trails.js Application',
@@ -195,11 +228,16 @@ module.exports = generators.Base.extend({
         this.options.projectRoot,
         'index.js'
       ),
-      keywords: this.props.keywords
-    };
+      keywords: []
+    }, currentPkg);
+
+    // Combine the keywords
+    if (this.props.keywords) {
+      pkg.keywords = _.uniq(this.props.keywords.concat(pkg.keywords));
+    }
 
     // Let's extend package.json so we're not overwriting user previous fields
-    this.fs.writeJSON('package.json', extend(pkg, currentPkg));
+    this.fs.writeJSON(this.destinationPath('package.json'), pkg);
   },
 
   default: function () {
@@ -232,12 +270,13 @@ module.exports = generators.Base.extend({
       local: require.resolve('../git')
     });
 
-    if (this.options.gulp !== false) {
+    if (this.options.gulp) {
       this.composeWith('node:gulp', {
         options: {
           coveralls: this.props.includeCoveralls,
           babel: this.props.babel,
-          projectRoot: this.options.projectRoot
+          projectRoot: this.options.projectRoot,
+          cli: this.options.cli
         }
       }, {
         local: require.resolve('../gulp')
@@ -265,7 +304,7 @@ module.exports = generators.Base.extend({
       });
     }
 
-    if (!this.pkg.license) {
+    if (this.options.license && !this.pkg.license) {
       this.composeWith('license', {
         options: {
           name: this.props.authorName,

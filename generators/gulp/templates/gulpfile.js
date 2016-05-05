@@ -12,6 +12,9 @@ var plumber = require('gulp-plumber');
 <% if (includeCoveralls) { -%>
 var coveralls = require('gulp-coveralls');
 <% } -%>
+<% if (cli) { -%>
+var lec = require('gulp-line-ending-corrector');
+<% } -%>
 <% if (babel) { -%>
 var babel = require('gulp-babel');
 var del = require('del');
@@ -36,6 +39,7 @@ gulp.task('nsp', function (cb) {
 
 gulp.task('pre-test', function () {
   return gulp.src('<%- projectRoot %>')
+    .pipe(excludeGitignore())
     .pipe(istanbul({
       includeUntested: true<% if (babel) { %>,
       instrumenter: isparta.Instrumenter<% } %>
@@ -57,6 +61,10 @@ gulp.task('test', ['pre-test'], function (cb) {
       cb(mochaErr);
     });
 });
+
+gulp.task('watch', function () {
+  gulp.watch(['<%- projectRoot %>', 'test/**'], ['test']);
+});
 <% if (includeCoveralls) { -%>
 
 gulp.task('coveralls', ['test'], function () {
@@ -66,6 +74,14 @@ gulp.task('coveralls', ['test'], function () {
 
   return gulp.src(path.join(__dirname, 'coverage/lcov.info'))
     .pipe(coveralls());
+});
+<% } -%>
+<% if (cli) { -%>
+gulp.task('line-ending-corrector', function () {
+  return gulp.src('<%- projectRoot.replace("**/*.js", "cli.js") %>')
+    .pipe(excludeGitignore())
+    .pipe(lec())
+    .pipe(gulp.dest('.'));
 });
 <% } -%>
 <% if (babel) { -%>

@@ -1,6 +1,6 @@
 'use strict';
 var _ = require('lodash');
-var extend = require('deep-extend');
+var extend = _.merge;
 var generators = require('yeoman-generator');
 
 module.exports = generators.Base.extend({
@@ -29,7 +29,7 @@ module.exports = generators.Base.extend({
       extend(pkg, {
         bin: this.options.babel ? 'dist/cli.js' : 'lib/cli.js',
         dependencies: {
-          meow: '^3.3.0'
+          meow: '^3.7.0'
         }
       });
 
@@ -40,7 +40,8 @@ module.exports = generators.Base.extend({
       var pkg = this.fs.readJSON(this.destinationPath(this.options.generateInto, 'package.json'));
       this.fs.copyTpl(
         this.templatePath('cli.js'),
-        this.destinationPath(this.options.generateInto,  'lib/cli.js'), {
+        this.destinationPath(this.options.generateInto, 'lib/cli.js'), {
+          pkgName: pkg.name,
           pkgSafeName: _.camelCase(pkg.name),
           babel: this.options.babel
         }

@@ -32,13 +32,12 @@ module.exports = generators.Base.extend({
       this.destinationPath(this.options.generateInto, '.gitignore')
     );
 
-    var done = this.async();
-
-    originUrl(this.destinationPath(this.options.generateInto), function (err, url) {
-      this.originUrl = url;
-      done();
-    }.bind(this));
-
+    return originUrl(this.destinationPath(this.options.generateInto))
+      .then(function (url) {
+        this.originUrl = url;
+      }.bind(this), function () {
+        this.originUrl = '';
+      }.bind(this));
   },
 
   writing: function () {
@@ -63,7 +62,7 @@ module.exports = generators.Base.extend({
 
     if (!this.originUrl) {
       var repoSSH = this.pkg.repository;
-      if (this.pkg.repository.indexOf('.git') === -1) {
+      if (this.pkg.repository && this.pkg.repository.indexOf('.git') === -1) {
         repoSSH = 'git@github.com:' + this.pkg.repository + '.git';
       }
       this.spawnCommandSync('git', ['remote', 'add', 'origin', repoSSH], {
