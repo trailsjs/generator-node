@@ -1,6 +1,6 @@
 {
   "name": "@trailsjs/generator-node",
-  "version": "1.7.4",
+  "version": "1.7.5",
   "main": "index.js",
   "description": "Create a Node.js module",
   "homepage": "https://github.com/yeoman/generator-node",
