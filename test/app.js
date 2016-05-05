@@ -48,13 +48,7 @@ describe('node:app', function () {
     it('creates files', function () {
       assert.file([
         '.travis.yml',
-        '.editorconfig',
-        '.eslintrc',
-        '.gitignore',
-        '.gitattributes',
-        'README.md',
-        'lib/index.js',
-        'test/index.js'
+        '.gitignore'
       ]);
     });
 
@@ -71,21 +65,11 @@ describe('node:app', function () {
           email: this.answers.authorEmail,
           url: this.answers.authorUrl
         },
-        files: ['dist'],
         keywords: this.answers.keywords,
         main: 'dist/index.js'
       });
     });
 
-    it('creates and fill contents in README.md', function () {
-      assert.file('README.md');
-      assert.fileContent('README.md', 'var generatorNode = require(\'generator-node\');');
-      assert.fileContent('README.md', '> A node generator');
-      assert.fileContent('README.md', '$ npm install --save generator-node');
-      assert.fileContent('README.md', '© [The Yeoman Team](http://yeoman.io)');
-      assert.fileContent('README.md', '[travis-image]: https://travis-ci.org/yeoman/generator-node.svg?branch=master');
-      assert.fileContent('README.md', 'coveralls');
-    });
   });
 
   describe('running on existing project', function () {
@@ -142,13 +126,6 @@ describe('node:app', function () {
     it('skip .bablerc', function () {
       assert.noFile('.babelrc');
     });
-
-    it('include the raw files', function () {
-      assert.JSONFileContent('package.json', {
-        files: ['lib'],
-        main: 'lib/index.js'
-      });
-    });
   });
 
   describe('--projectRoot', function () {
@@ -160,7 +137,6 @@ describe('node:app', function () {
 
     it('include the raw files', function () {
       assert.JSONFileContent('package.json', {
-        files: ['generators'],
         main: 'generators/index.js'
       });
     });

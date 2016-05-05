@@ -16,10 +16,6 @@ describe('node:git', function () {
     assert.file('.gitignore');
   });
 
-  it('creates .gitattributes', function () {
-    assert.file('.gitattributes');
-  });
-
   it('initialize git repository', function () {
     assert.file('.git');
   });
@@ -39,11 +35,5 @@ describe('node:git', function () {
     assert.file('other/.gitignore');
   });
 
-  it('creates .gitattributes with generate-into option', function () {
-    assert.file('other/.gitattributes');
-  });
 
-  it('initialize git repository with generate-into option', function () {
-    assert.file('other/.git');
-  });
 });

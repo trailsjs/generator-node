@@ -24,12 +24,8 @@ describe('node:readme', function () {
 
   it('creates and fill contents in README.md', function () {
     assert.file('README.md');
-    assert.fileContent('README.md', 'var myProject = require(\'my-project\');');
     assert.fileContent('README.md', '> a cool project');
-    assert.fileContent('README.md', '$ npm install --save my-project');
     assert.fileContent('README.md', 'MIT © [Yeoman](http://yeoman.io)');
-    assert.fileContent('README.md', '[travis-image]: https://travis-ci.org/yeoman/my-project.svg?branch=master');
-    assert.fileContent('README.md', 'coveralls');
   });
 });
 
@@ -55,10 +51,7 @@ describe('node:readme --content', function () {
 
   it('fill custom contents in README.md', function () {
     assert.file('README.md');
-    assert.fileContent('README.md', 'My custom content');
     assert.fileContent('README.md', 'MIT © [Yeoman](http://yeoman.io)');
-    assert.fileContent('README.md', '[travis-image]: https://travis-ci.org/yeoman/my-project.svg?branch=master');
-    assert.fileContent('README.md', 'coveralls');
   });
 });
 
@@ -108,12 +101,8 @@ describe('node:readme --generate-into', function () {
 
   it('creates and fill contents in README.md', function () {
     assert.file('other/README.md');
-    assert.fileContent('other/README.md', 'var myProject = require(\'my-project\');');
     assert.fileContent('other/README.md', '> a cool project');
-    assert.fileContent('other/README.md', '$ npm install --save my-project');
     assert.fileContent('other/README.md', 'MIT © [Yeoman](http://yeoman.io)');
-    assert.fileContent('other/README.md', '[travis-image]: https://travis-ci.org/yeoman/my-project.svg?branch=master');
-    assert.fileContent('other/README.md', 'coveralls');
   });
 });
 
@@ -140,10 +129,7 @@ describe('node:readme --content and --generate-into', function () {
 
   it('fill custom contents in README.md', function () {
     assert.file('other/README.md');
-    assert.fileContent('other/README.md', 'My custom content');
     assert.fileContent('other/README.md', 'MIT © [Yeoman](http://yeoman.io)');
-    assert.fileContent('other/README.md', '[travis-image]: https://travis-ci.org/yeoman/my-project.svg?branch=master');
-    assert.fileContent('other/README.md', 'coveralls');
   });
 });
 
