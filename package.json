@@ -13,8 +13,8 @@
     "trailsjs",
     "trails"
   ],
-  "author": "Yeoman team",
-  "repository": "yeoman/generator-node",
+  "author": "Trails.js Team <hello@trailsjs.io>",
+  "repository": "trailsjs/generator-node",
   "scripts": {
     "test": "gulp",
     "prepublish": "gulp prepublish"
