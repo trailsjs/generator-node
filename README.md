@@ -10,7 +10,7 @@ Maintained by [Hemanth.HM](http://github.com/hemanth).
 ## Install
 
 ```
-$ npm install --global generator-node
+$ npm install @trails/generator-node
 ```
 
 

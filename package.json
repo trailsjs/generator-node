@@ -1,5 +1,5 @@
 {
-  "name": "generator-node",
+  "name": "@trails/generator-node",
   "version": "1.7.2",
   "main": "index.js",
   "description": "Create a Node.js module",
@@ -9,7 +9,9 @@
     "scaffold",
     "node",
     "module",
-    "cli"
+    "cli",
+    "trailsjs",
+    "trails"
   ],
   "author": "Yeoman team",
   "repository": "yeoman/generator-node",

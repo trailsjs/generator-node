@@ -184,12 +184,12 @@ module.exports = generators.Base.extend({
     var pkg = {
       name: _.kebabCase(this.props.name),
       version: '0.0.0',
-      description: this.props.description,
-      homepage: this.props.homepage,
+      description: this.props.description || 'A new Trails.js Application',,
+      homepage: this.props.homepage || 'http://trailsjs.io',
       author: {
-        name: this.props.authorName,
-        email: this.props.authorEmail,
-        url: this.props.authorUrl
+        name: this.props.authorName || 'Trails',
+        email: this.props.authorEmail || 'hello@trailsjs.io',
+        url: this.props.authorUrl || 'https://github.com/trailsjs'
       },
       main: this.props.babel ? 'dist/index.js' : path.join(
         this.options.projectRoot,
