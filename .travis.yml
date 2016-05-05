@@ -1,5 +1,15 @@
 language: node_js
 node_js:
-  - 4
-  - 5
-  - 6
+- 4
+- 5
+- 6
+
+deploy:
+  provider: npm
+  email: hello@trailsjs.io
+  api_key:
+    secure: jFFtKNeEhd3AMYd1jsHeHkv26vaEPZNwejSSz0Ki/2NxBPn+tJ+5/Vcr2aOvzGuhb+SVrN6BMerjeZw9fXNOYVkOtubU5I0dg3Zemaj/T9oDs80xGSjysw0rDl/bcVkh3xYssmYfsCO+RV2Cyfmw13HV2h7MbZq+y1d1SfMCFECeKjx6Fh/sfGtwWLNzQ/GgccxxGjNb8F4K6bKYqqs6Slzw70Rsj+a6nrnvFYCmj9KJZolUc0Nmj8daO6XwdIl+LfDINV3KgdgHc45v2Fogp0UnqXbZJN8Eh40hRWmQP5qVJo56RIESms43f4M8UuAtKYO+BiOWsVsgYOaBD5Pw3dbtFrlC7m4A4WWfsrVwEfOYCoV38lnYcG7hTbDeudLvlnL7xiAdlRDWMU5YyT3COiCp1FcHYFau76Oc38AuAO0xbQ2wockKkegept5a6z7LputE9Dsm9piowP84uEObald+cmU+HGnloOiVKDxMA6xtbt12fqE7hh7cmhq+9VTZ6t+2hG1M4CW7ndcbfk6IjTSUe2M778lWF1GeNQruoTrpWzHEz9K8LKXGo0UbkDwwcXaRdk1ihkGM2jJCDwwxOgl3Zz8i/pnuhMrr0Ckseb2eVi4VlsWGyl+eH4/XQDJXQQwN76CrveaOAbxrCt0LFW7r0QiBdN/TxZwP0lmMYsI=
+  on:
+    tags: true
+    repo: trailsjs/generator-node
+    node: 6
