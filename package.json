@@ -1,5 +1,5 @@
 {
-  "name": "@trails/generator-node",
+  "name": "@trailsjs/generator-node",
   "version": "1.7.4",
   "main": "index.js",
   "description": "Create a Node.js module",
