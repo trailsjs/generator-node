@@ -41,6 +41,15 @@
     "yeoman-assert": "^2.2.1",
     "yeoman-test": "^1.0.0"
   },
+  "bundledDependencies": [
+    "generator-license",
+    "generator-travis",
+    "git-remote-origin-url",
+    "github-username",
+    "inquirer-npm-name",
+    "parse-author",
+    "yeoman-generator"
+  ],
   "files": [
     "index.js",
     "generators"
