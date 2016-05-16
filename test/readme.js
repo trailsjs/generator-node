@@ -4,8 +4,8 @@ var assert = require('yeoman-assert');
 var helpers = require('yeoman-test');
 
 describe('node:readme', function () {
-  before(function (done) {
-    helpers.run(path.join(__dirname, '../generators/readme'))
+  before(function () {
+    return helpers.run(path.join(__dirname, '../generators/readme'))
       .withOptions({
         name: 'my-project',
         description: 'a cool project',
@@ -19,7 +19,7 @@ describe('node:readme', function () {
           license: 'MIT'
         });
       })
-      .on('end', done);
+      .toPromise();
   });
 
   it('creates and fill contents in README.md', function () {
@@ -30,8 +30,8 @@ describe('node:readme', function () {
 });
 
 describe('node:readme --content', function () {
-  before(function (done) {
-    helpers.run(path.join(__dirname, '../generators/readme'))
+  before(function () {
+    return helpers.run(path.join(__dirname, '../generators/readme'))
       .withOptions({
         name: 'my-project',
         description: 'a cool project',
@@ -46,7 +46,7 @@ describe('node:readme --content', function () {
           license: 'MIT'
         });
       })
-      .on('end', done);
+      .toPromise();
   });
 
   it('fill custom contents in README.md', function () {
@@ -56,8 +56,8 @@ describe('node:readme --content', function () {
 });
 
 describe('node:readme --no-coveralls', function () {
-  before(function (done) {
-    helpers.run(path.join(__dirname, '../generators/readme'))
+  before(function () {
+    return helpers.run(path.join(__dirname, '../generators/readme'))
       .withOptions({
         name: 'my-project',
         description: 'a cool project',
@@ -71,7 +71,7 @@ describe('node:readme --no-coveralls', function () {
           license: 'MIT'
         });
       })
-      .on('end', done);
+      .toPromise();
   });
 
   it('does not include coveralls badge README.md', function () {
@@ -80,8 +80,8 @@ describe('node:readme --no-coveralls', function () {
 });
 
 describe('node:readme --generate-into', function () {
-  before(function (done) {
-    helpers.run(path.join(__dirname, '../generators/readme'))
+  before(function () {
+    return helpers.run(path.join(__dirname, '../generators/readme'))
       .withOptions({
         name: 'my-project',
         description: 'a cool project',
@@ -96,7 +96,7 @@ describe('node:readme --generate-into', function () {
           license: 'MIT'
         });
       })
-      .on('end', done);
+      .toPromise();
   });
 
   it('creates and fill contents in README.md', function () {
@@ -107,8 +107,8 @@ describe('node:readme --generate-into', function () {
 });
 
 describe('node:readme --content and --generate-into', function () {
-  before(function (done) {
-    helpers.run(path.join(__dirname, '../generators/readme'))
+  before(function () {
+    return helpers.run(path.join(__dirname, '../generators/readme'))
       .withOptions({
         name: 'my-project',
         description: 'a cool project',
@@ -124,7 +124,7 @@ describe('node:readme --content and --generate-into', function () {
           license: 'MIT'
         });
       })
-      .on('end', done);
+      .toPromise();
   });
 
   it('fill custom contents in README.md', function () {
@@ -134,8 +134,8 @@ describe('node:readme --content and --generate-into', function () {
 });
 
 describe('node:readme --no-coveralls and --generate-into', function () {
-  before(function (done) {
-    helpers.run(path.join(__dirname, '../generators/readme'))
+  before(function () {
+    return helpers.run(path.join(__dirname, '../generators/readme'))
       .withOptions({
         name: 'my-project',
         description: 'a cool project',
@@ -150,7 +150,7 @@ describe('node:readme --no-coveralls and --generate-into', function () {
           license: 'MIT'
         });
       })
-      .on('end', done);
+      .toPromise();
   });
 
   it('does not include coveralls badge README.md', function () {
