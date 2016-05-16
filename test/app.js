@@ -86,7 +86,7 @@ describe('node:app', function () {
         files: ['lib'],
         keywords: ['bar']
       };
-      return helpers.run(path.join(__dirname, '../generators/app'))
+      return helpers.run(path.join(__dirname, '..', 'generators', 'app'))
         .withPrompts({
           name: 'generator-node'
         })
@@ -109,7 +109,7 @@ describe('node:app', function () {
 
   describe('--no-travis', function () {
     before(function () {
-      return helpers.run(path.join(__dirname, '../generators/app'))
+      return helpers.run(path.join(__dirname, '..', 'generators', 'app'))
         .withOptions({travis: false})
         .toPromise();
     });
@@ -121,7 +121,7 @@ describe('node:app', function () {
 
   describe('--no-babel', function () {
     before(function () {
-      return helpers.run(path.join(__dirname, '../generators/app'))
+      return helpers.run(path.join(__dirname, '..', 'generators', 'app'))
         .withOptions({babel: false})
         .toPromise();
     });
@@ -133,14 +133,14 @@ describe('node:app', function () {
 
   describe('--projectRoot', function () {
     before(function () {
-      return helpers.run(path.join(__dirname, '../generators/app'))
+      return helpers.run(path.join(__dirname, '..', 'generators', 'app'))
         .withOptions({projectRoot: 'generators', babel: false})
         .toPromise();
     });
 
     it('include the raw files', function () {
       assert.JSONFileContent('package.json', {
-        main: 'generators/index.js'
+        main: path.join('generators', 'index.js')
       });
     });
   });

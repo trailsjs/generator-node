@@ -8,7 +8,7 @@ var nsp = require('gulp-nsp');
 var plumber = require('gulp-plumber');
 
 gulp.task('static', function () {
-  return gulp.src(['**/*.js', '!**/templates/**'])
+  return gulp.src([path.join('**', '*.js'), path.join('!**', 'templates', '**')])
     .pipe(excludeGitignore())
 });
 
@@ -17,7 +17,7 @@ gulp.task('nsp', function (cb) {
 });
 
 gulp.task('pre-test', function () {
-  return gulp.src(['**/*.js', '!**/templates/**'])
+  return gulp.src([path.join('**', '*.js'), path.join('!**', 'templates', '**')])
     .pipe(excludeGitignore())
     .pipe(istanbul({
       includeUntested: true
@@ -28,7 +28,7 @@ gulp.task('pre-test', function () {
 gulp.task('test', ['pre-test'], function (cb) {
   var mochaErr;
 
-  gulp.src('test/**/*.js')
+  gulp.src(path.join('test', '**', '*.js'))
     .pipe(plumber())
     .pipe(mocha({reporter: 'spec', timeout: 8000}))
     .on('error', function (err) {
@@ -41,7 +41,7 @@ gulp.task('test', ['pre-test'], function (cb) {
 });
 
 gulp.task('watch', function () {
-  gulp.watch(['**/*.js', 'test/**'], ['test']);
+  gulp.watch([path.join('**', '*.js'), path.join('test', '**')], ['test']);
 });
 
 gulp.task('prepublish', ['nsp']);
