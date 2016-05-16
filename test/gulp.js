@@ -6,7 +6,7 @@ var helpers = require('yeoman-test');
 describe('node:gulp', function () {
   describe('including coveralls', function () {
     before(function () {
-      return helpers.run(path.join(__dirname, '../generators/gulp'))
+      return helpers.run(path.join(__dirname, '..', 'generators', 'gulp'))
         .withOptions({
           coveralls: true,
           projectRoot: 'lib'
@@ -38,7 +38,7 @@ describe('node:gulp', function () {
 
   describe('excluding coveralls', function () {
     before(function () {
-      return helpers.run(path.join(__dirname, '../generators/gulp'))
+      return helpers.run(path.join(__dirname, '..', 'generators', 'gulp'))
         .withOptions({
           coveralls: false,
           projectRoot: 'lib'
@@ -54,7 +54,7 @@ describe('node:gulp', function () {
 
   describe('--no-coveralls', function () {
     before(function () {
-      return helpers.run(path.join(__dirname, '../generators/gulp'))
+      return helpers.run(path.join(__dirname, '..', 'generators', 'gulp'))
         .withOptions({
           coveralls: false,
           projectRoot: 'lib'
@@ -70,7 +70,7 @@ describe('node:gulp', function () {
 
   describe('--babel', function () {
     before(function () {
-      return helpers.run(path.join(__dirname, '../generators/gulp'))
+      return helpers.run(path.join(__dirname, '..', 'generators', 'gulp'))
         .withOptions({
           babel: true,
           projectRoot: 'lib'
@@ -88,7 +88,7 @@ describe('node:gulp', function () {
 
   describe('--projectRoot', function () {
     before(function () {
-      return helpers.run(path.join(__dirname, '../generators/gulp'))
+      return helpers.run(path.join(__dirname, '..', 'generators', 'gulp'))
         .withOptions({
           projectRoot: 'generators'
         })
@@ -105,7 +105,7 @@ describe('node:gulp', function () {
 describe('node:gulp', function () {
   describe('including coveralls with generate-into option', function () {
     before(function () {
-      return helpers.run(path.join(__dirname, '../generators/gulp'))
+      return helpers.run(path.join(__dirname, '..', 'generators', 'gulp'))
         .withOptions({
           coveralls: true,
           projectRoot: 'lib',
@@ -116,29 +116,29 @@ describe('node:gulp', function () {
 
     it('creates files and configuration', function () {
       assert.file([
-        'other/gulpfile.js',
-        'other/package.json'
+        path.join('other', 'gulpfile.js'),
+        path.join('other', 'package.json')
       ]);
 
-      assert.fileContent('other/gulpfile.js', 'gulp.task(\'coveralls\'');
-      assert.fileContent('other/gulpfile.js', 'gulp.task(\'test\'');
-      assert.fileContent('other/gulpfile.js', 'gulp.task(\'static\'');
+      assert.fileContent(path.join('other', 'gulpfile.js'), 'gulp.task(\'coveralls\'');
+      assert.fileContent(path.join('other', 'gulpfile.js'), 'gulp.task(\'test\'');
+      assert.fileContent(path.join('other', 'gulpfile.js'), 'gulp.task(\'static\'');
 
-      assert.fileContent('other/package.json', 'gulp');
-      assert.fileContent('other/package.json', 'gulp-coveralls');
-      assert.fileContent('other/package.json', '"test": "gulp"');
-      assert.fileContent('other/package.json', '"prepublish": "gulp prepublish"');
+      assert.fileContent(path.join('other', 'package.json'), 'gulp');
+      assert.fileContent(path.join('other', 'package.json'), 'gulp-coveralls');
+      assert.fileContent(path.join('other', 'package.json'), '"test": "gulp"');
+      assert.fileContent(path.join('other', 'package.json'), '"prepublish": "gulp prepublish"');
     });
 
     it('does not include babel configurations', function () {
-      assert.noFileContent('other/gulpfile.js', 'gulp.task(\'babel\'');
-      assert.noFileContent('other/package.json', 'gulp-babel');
+      assert.noFileContent(path.join('other', 'gulpfile.js'), 'gulp.task(\'babel\'');
+      assert.noFileContent(path.join('other', 'package.json'), 'gulp-babel');
     });
   });
 
   describe('excluding coveralls with generate-into option', function () {
     before(function () {
-      return helpers.run(path.join(__dirname, '../generators/gulp'))
+      return helpers.run(path.join(__dirname, '..', 'generators', 'gulp'))
         .withOptions({
           coveralls: false,
           projectRoot: 'lib',
@@ -148,14 +148,14 @@ describe('node:gulp', function () {
     });
 
     it('does not include coveralls configurations', function () {
-      assert.noFileContent('other/gulpfile.js', 'gulp.task(\'coveralls\'');
-      assert.noFileContent('other/package.json', 'gulp-coveralls');
+      assert.noFileContent(path.join('other', 'gulpfile.js'), 'gulp.task(\'coveralls\'');
+      assert.noFileContent(path.join('other', 'package.json'), 'gulp-coveralls');
     });
   });
 
   describe('--no-coveralls and --generate-into', function () {
     before(function () {
-      return helpers.run(path.join(__dirname, '../generators/gulp'))
+      return helpers.run(path.join(__dirname, '..', 'generators', 'gulp'))
         .withOptions({
           coveralls: false,
           projectRoot: 'lib',
@@ -165,14 +165,14 @@ describe('node:gulp', function () {
     });
 
     it('does not include coveralls configurations', function () {
-      assert.noFileContent('other/gulpfile.js', 'gulp.task(\'coveralls\'');
-      assert.noFileContent('other/package.json', 'gulp-coveralls');
+      assert.noFileContent(path.join('other', 'gulpfile.js'), 'gulp.task(\'coveralls\'');
+      assert.noFileContent(path.join('other', 'package.json'), 'gulp-coveralls');
     });
   });
 
   describe('--babel and --generate-into', function () {
     before(function () {
-      return helpers.run(path.join(__dirname, '../generators/gulp'))
+      return helpers.run(path.join(__dirname, '..', 'generators', 'gulp'))
         .withOptions({
           babel: true,
           projectRoot: 'lib',
@@ -182,16 +182,16 @@ describe('node:gulp', function () {
     });
 
     it('includes babel configuration', function () {
-      assert.fileContent('other/gulpfile.js', 'gulp.task(\'babel\'');
-      assert.fileContent('other/gulpfile.js', 'gulp.task(\'prepublish\', [\'nsp\', \'babel\']);');
-      assert.fileContent('other/package.json', 'gulp-babel');
-      assert.fileContent('other/.gitignore', 'dist');
+      assert.fileContent(path.join('other', 'gulpfile.js'), 'gulp.task(\'babel\'');
+      assert.fileContent(path.join('other', 'gulpfile.js'), 'gulp.task(\'prepublish\', [\'nsp\', \'babel\']);');
+      assert.fileContent(path.join('other', 'package.json'), 'gulp-babel');
+      assert.fileContent(path.join('other', '.gitignore'), 'dist');
     });
   });
 
   describe('--projectRoot and --generate-into', function () {
     before(function () {
-      return helpers.run(path.join(__dirname, '../generators/gulp'))
+      return helpers.run(path.join(__dirname, '..', 'generators', 'gulp'))
         .withOptions({
           projectRoot: 'generators',
           generateInto: 'other/'
@@ -200,8 +200,8 @@ describe('node:gulp', function () {
     });
 
     it('define a custom root', function () {
-      assert.fileContent('other/gulpfile.js', 'gulp.src(\'generators/**/*.js\')');
-      assert.noFileContent('other/gulpfile.js', 'gulp.src(\'lib/**/*.js\')');
+      assert.fileContent(path.join('other', 'gulpfile.js'), 'gulp.src(\'generators/**/*.js\')');
+      assert.noFileContent(path.join('other', 'gulpfile.js'), 'gulp.src(\'lib/**/*.js\')');
     });
   });
 });
