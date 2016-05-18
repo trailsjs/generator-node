@@ -1,6 +1,6 @@
 {
   "name": "@trails/generator-node",
-  "version": "1.10.19",
+  "version": "1.10.20",
   "main": "index.js",
   "description": "Create a Node.js module",
   "homepage": "https://github.com/yeoman/generator-node",
@@ -62,9 +62,5 @@
       "mocha": true
     }
   },
-  "files": [
-    "index.js",
-    "generators"
-  ],
   "license": "MIT"
 }
