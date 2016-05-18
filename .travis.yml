@@ -17,4 +17,4 @@ deploy:
   on:
     tags: true
     repo: trailsjs/generator-node
-    node: 6
+    node: 5
