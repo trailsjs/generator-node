@@ -29,16 +29,6 @@
     "parse-author": "^1.0.0",
     "yeoman-generator": "^0.23.3"
   },
-  "bundledDependencies": [
-    "generator-license",
-    "generator-travis",
-    "git-remote-origin-url",
-    "github-username",
-    "inquirer-npm-name",
-    "lodash",
-    "parse-author",
-    "yeoman-generator"
-  ],
   "devDependencies": {
     "eslint": "^2.0.0",
     "eslint-config-xo": "^0.14.1",
