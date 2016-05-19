@@ -32,19 +32,19 @@ describe('node:app', function () {
   });
 
   describe('running on new project', function () {
+    var answers = {
+      name: 'generator-node',
+      description: 'A node generator',
+      homepage: 'http://yeoman.io',
+      githubAccount: 'yeoman',
+      authorName: 'The Yeoman Team',
+      authorEmail: 'hi@yeoman.io',
+      authorUrl: 'http://yeoman.io',
+      keywords: ['foo', 'bar']
+    };
     before(function () {
-      this.answers = {
-        name: 'generator-node',
-        description: 'A node generator',
-        homepage: 'http://yeoman.io',
-        githubAccount: 'yeoman',
-        authorName: 'The Yeoman Team',
-        authorEmail: 'hi@yeoman.io',
-        authorUrl: 'http://yeoman.io',
-        keywords: ['foo', 'bar']
-      };
-      return helpers.run(path.join(__dirname, '../generators/app'))
-        .withPrompts(this.answers)
+      return helpers.run(path.join(__dirname, '..', 'generators', 'app'))
+        .withPrompts(answers)
         .toPromise();
     });
 
@@ -60,19 +60,18 @@ describe('node:app', function () {
       assert.jsonFileContent('package.json', {
         name: 'generator-node',
         version: '0.0.0',
-        description: this.answers.description,
-        homepage: this.answers.homepage,
+        description: answers.description,
+        homepage: answers.homepage,
         repository: 'yeoman/generator-node',
         author: {
-          name: this.answers.authorName,
-          email: this.answers.authorEmail,
-          url: this.answers.authorUrl
+          name: answers.authorName,
+          email: answers.authorEmail,
+          url: answers.authorUrl
         },
-        keywords: this.answers.keywords,
+        keywords: answers.keywords,
         main: 'dist/index.js'
       });
     });
-
   });
 
   describe('running on existing project', function () {
