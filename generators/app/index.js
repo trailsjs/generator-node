@@ -76,12 +76,6 @@ module.exports = generators.Base.extend({
       defaults: 'lib',
       desc: 'Relative path to the project code root'
     });
-
-    this.option('readme', {
-      type: String,
-      required: false,
-      desc: 'Content to insert in the README.md file'
-    });
   },
 
   initializing: function () {
@@ -307,22 +301,6 @@ module.exports = generators.Base.extend({
         }
       }, {
         local: require.resolve('generator-license/app')
-      });
-    }
-
-    if (!this.fs.exists(this.destinationPath('README.md'))) {
-      this.composeWith('node:readme', {
-        options: {
-          name: this.props.name,
-          description: this.props.description,
-          githubAccount: this.props.githubAccount,
-          authorName: this.props.authorName,
-          authorUrl: this.props.authorUrl,
-          coveralls: this.props.includeCoveralls,
-          content: this.options.readme
-        }
-      }, {
-        local: require.resolve('../readme')
       });
     }
   },
