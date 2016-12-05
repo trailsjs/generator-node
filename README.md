@@ -7,7 +7,7 @@
 [![Code Climate][codeclimate-image]][codeclimate-url]
 [![Follow @trailsjs on Twitter][twitter-image]][twitter-url]
 
-This should only be used as a submodule of the [Trails.js Generator](https://github.com/trailsjs/generator-trails).
+This fork should only be used as a submodule of the [Trails.js Generator](https://github.com/trailsjs/generator-trails).
 
 ## License
 

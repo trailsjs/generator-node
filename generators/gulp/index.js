@@ -47,14 +47,14 @@ module.exports = generators.Base.extend({
 
       extend(pkg, {
         devDependencies: {
-          'gulp': '^3.9.0',
-          'gulp-eslint': '^2.0.0',
+          gulp: '3.9.1',
+          'gulp-eslint': '^3.0.1',
           'gulp-exclude-gitignore': '^1.0.0',
+          'gulp-istanbul': '^1.1.1',
           'gulp-line-ending-corrector': '^1.0.1',
-          'gulp-istanbul': '^0.10.3',
-          'gulp-mocha': '^2.0.0',
-          'gulp-plumber': '^1.0.0',
-          'gulp-nsp': '^2.1.0'
+          'gulp-mocha': '^3.0.1',
+          'gulp-nsp': '^2.4.2',
+          'gulp-plumber': '^1.1.0'
         },
         scripts: {
           prepublish: 'gulp prepublish',
@@ -67,10 +67,12 @@ module.exports = generators.Base.extend({
       }
 
       if (this.options.babel) {
-        pkg.devDependencies['gulp-babel'] = '^5.1.0';
+        pkg.devDependencies['gulp-babel'] = '^6.1.2';
         pkg.devDependencies.del = '^2.0.2';
-        pkg.devDependencies['babel-core'] = '^5.5.0';
-        pkg.devDependencies.isparta = '^3.0.3';
+        pkg.devDependencies['babel-core'] = '^6.11.4';
+        pkg.devDependencies['babel-register'] = '^6.9.0';
+        pkg.devDependencies['babel-preset-es2015'] = '6.9.0';
+        pkg.devDependencies.isparta = '^4.0.0';
       }
 
       if (this.options.cli) {
@@ -105,7 +107,7 @@ module.exports = generators.Base.extend({
           babel: this.options.babel,
           tasks: stringifyArray(tasks),
           prepublishTasks: stringifyArray(prepublishTasks),
-          projectRoot: path.join(this.options.projectRoot, '**/*.js')
+          projectRoot: path.join(this.options.projectRoot, '**/*.js').replace(/\\/g, '/')
         }
       );
     },

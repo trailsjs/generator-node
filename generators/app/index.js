@@ -180,21 +180,22 @@ module.exports = generators.Base.extend({
         this.props.githubAccount = this.options.githubAccount;
         return;
       }
-      var done = this.async();
 
-      githubUsername(this.props.authorEmail, function (err, username) {
-        if (err) {
-          username = username || '';
-        }
-        this.prompt({
-          name: 'githubAccount',
-          message: 'GitHub username or organization',
-          default: username
-        }).then(function (prompt) {
-          this.props.githubAccount = prompt.githubAccount;
-          done();
+      return githubUsername(this.props.authorEmail)
+        .then(function (username) {
+          return username;
+        }, function () {
+          return '';
+        })
+        .then(function (username) {
+          return this.prompt({
+            name: 'githubAccount',
+            message: 'GitHub username or organization',
+            default: username
+          }).then(function (prompt) {
+            this.props.githubAccount = prompt.githubAccount;
+          }.bind(this));
         }.bind(this));
-      }.bind(this));
     }
   },
 
@@ -215,7 +216,7 @@ module.exports = generators.Base.extend({
       main: this.props.babel ? 'dist/index.js' : path.join(
         this.options.projectRoot,
         'index.js'
-      ),
+      ).replace(/\\/g, '/'),
       keywords: []
     }, currentPkg);
 
