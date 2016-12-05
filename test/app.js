@@ -139,7 +139,7 @@ describe('node:app', function () {
 
     it('include the raw files', function () {
       assert.JSONFileContent('package.json', {
-        main: path.join('generators', 'index.js')
+        main: 'generators/index.js'
       });
     });
   });

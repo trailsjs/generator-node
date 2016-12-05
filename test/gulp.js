@@ -96,8 +96,8 @@ describe('node:gulp', function () {
     });
 
     it('define a custom root', function () {
-      assert.fileContent('gulpfile.js', 'gulp.src(\''+path.join('generators', '**', '*.js')+'\')');
-      assert.noFileContent('gulpfile.js', 'gulp.src(\''+path.join('lib', '**', '*.js')+'\')');
+      assert.fileContent('gulpfile.js', 'gulp.src(\''+ 'generators/**/*.js' +'\')');
+      assert.noFileContent('gulpfile.js', 'gulp.src(\''+ 'lib/**/*.js' +'\')');
     });
   });
 });
